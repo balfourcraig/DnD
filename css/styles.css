@@ -68,7 +68,11 @@ nav a:hover{
 	box-shadow: 0 0 25px dodgerblue;
 }
 
-input{
+textarea{
+	resize: vertical;
+}
+
+input, textarea{
 	margin: 5px 0;
 	background-color: black;
 	color: #ccc;
@@ -82,7 +86,7 @@ input[type="number"]{
 	border-color: #c49c00;
 }
 
-input[type="text"]{
+input[type="text"], textarea{
 	color: #99c0ff;
 	border-color: #99c0ff;
 }
@@ -252,4 +256,42 @@ li{
 
 .randSelectArea div{
 	font-size: 32px;
+}
+
+.lineArea{
+	display: flex;
+	align-items: center;
+}
+
+.lineArea input, .lineArea textarea{
+	width: 100%;
+	margin: 0 1em;
+}
+
+.charBlock {
+	background-color: #353535;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #535353;
+	margin-bottom: 30px;
+}
+
+.charBlock .profilePic {
+  height: 128px;
+}
+
+.charHeader {
+  display: flex;
+}
+
+.nameBlock {
+  width: 100%;
+}
+
+.nameBlock label {
+  display: none;
+}
+
+.nameBlock input {
+  font-size: 24px;
 }
