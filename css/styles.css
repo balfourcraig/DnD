@@ -295,3 +295,27 @@ li{
 .nameBlock input {
   font-size: 24px;
 }
+
+.signpost {
+	font-size: 32px;
+	background-color: #53370d;
+	padding: 0.75em;
+	display: inline-block;
+	border-radius: 10px;
+	font-family: ;
+	font-family: 'Algerian';
+	color: blanchedalmond;
+	border: 3px outset #977137;
+}
+
+#fullList {
+	width: 100%;
+}
+
+#fullList td {
+	padding: 0.5em;
+}
+
+#fullList tr:nth-child(2n) {
+	background-color: #171717;
+}

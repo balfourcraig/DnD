@@ -11,6 +11,7 @@ function applyListFromURL(){
 
 function populateList(list){
 	document.getElementById('pageHeader').innerHTML = list.name;
+	document.title = list.name + ' ' + document.title ;
 	const fullListEl = document.getElementById('fullList');
 	for(let i of list.items){
 		const li = document.createElement('li');

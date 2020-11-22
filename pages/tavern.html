@@ -3,18 +3,12 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta charset="UTF-8">
-	<title>List - D&amp;D</title>
+	<title>Tavern - D&amp;D</title>
 	<link rel="stylesheet" href="../css/styles.css">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
-	<script src="../scripts/lists/gutWrench.js"></script>
-	<script src="../scripts/lists/npcFlavor.js"></script>
-	<script src="../scripts/lists/npcSecrets.js"></script>
-	<script src="../scripts/lists/names.js"></script>
-	<script src="../scripts/lists/clutter.js"></script>
-	<script src="../scripts/lists/voices.js"></script>
 	
 	<script src="../scripts/utils.js"></script>
-	<script src="../scripts/simpleListManager.js"></script>
+	<script src="../scripts/tavern.js"></script>
 </head>
 <body>
 <div class="navHolder">
@@ -27,18 +21,22 @@
 <main>
 	<div class="pageWidth">
 		<header>
-			<h1 id="pageHeader">List</h1>
+			<h1 id="pageHeader">Tavern</h1>
 		</header>
 		<section>
 			<h2>Random</h2>
-			<div class="randSelectArea">
 				<button id="rollBtn" class="randBtn">&#127922;</button>
-				<div id="randomListEl"></div>
-			</div>
+				<div class="signpost" id="randomListEl"></div>
 		</section>
 		<section>
 			<h2>Complete List</h2>
-			<ul id="fullList"></ul>
+			<table id="fullList">
+				<tr>
+					<th>#</th>
+					<th>List 1</th>
+					<th>List 2</th>
+				</tr>
+			</table>
 		</section>
 		<div class="scrollOverflow"></div>
 	</div>
