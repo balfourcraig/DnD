@@ -194,3 +194,25 @@ function fullMod(lhs, rhs) {
 	const r = lhs % rhs;
 	return r < 0 ? r + rhs : r;
 }
+
+function randMany(arrs){//broken
+  let totalLength = 0;
+	for(let i = 0; i < arrs.length; i++){
+    totalLength += arrs[i].length;
+  }
+	console.log('total length : ' + totalLength);
+	const index = Math.floor(Math.random() * totalLength);
+console.log('index: ' + index);
+	let offset = 0;
+	for(let i = 0; i < arrs.length; i++){
+	console.log(offset);	
+	if(offset + arrs[i].length < index){
+			console.log('found');
+			console.log(arrs[i][index - offset]);
+			return arrs[i][index - offset];
+		}
+		else{
+			offset += arrs[i].length;
+		}
+	}
+}
