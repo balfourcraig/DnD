@@ -14,9 +14,12 @@ function setup(){
 		fullListEl.appendChild(row);
 	}
 	
-	document.getElementById('randomListEl').innerHTML = randomTavernName();
+	const el = document.getElementById('randomListEl');
+	el.innerHTML = randomTavernName();
+	el.setAttribute('class', 'signpost ' + arrayRandom(signStyles) + ' ' + arrayRandom(signColors));
 	document.getElementById('rollBtn').addEventListener('click', () => {
-		document.getElementById('randomListEl').innerHTML = randomTavernName();
+		el.innerHTML = randomTavernName();
+		el.setAttribute('class', 'signpost ' + arrayRandom(signStyles) + ' ' + arrayRandom(signColors));
 	});
 }
 
@@ -27,6 +30,23 @@ function randomTavernName(){
 window.addEventListener('DOMContentLoaded', () => {
 	setup();
 });
+
+const signStyles = [
+	'signFont01',
+	'signFont02',
+	'signFont03',
+	'signFont04',
+	'signFont05',
+	'signFont06',
+];
+
+const signColors = [
+	'signColor01',
+	'signColor02',
+	'signColor03',
+	'signColor04',
+	'signColor05',
+];
 
 const tavern1 = [
 	'Stout',

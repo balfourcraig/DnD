@@ -1,0 +1,75 @@
+.signpost {
+	font-size: 32px;
+	padding: 0.75em;
+	display: inline-block;
+	border-radius: 10px;
+	font-family: ;
+	text-shadow: 0 0 10px rgba(0,0,0,0.4);
+	text-align: center;
+}
+
+#fullList {
+	width: 100%;
+}
+
+#fullList td {
+	padding: 0.5em;
+}
+
+#fullList tr:nth-child(2n) {
+	background-color: #171717;
+}
+
+.signFont01{
+	font-family: 'Algerian';
+}
+
+.signFont02{
+	font-family: 'Garamond';
+}
+
+.signFont03{
+	font-family: 'Castellar';
+}
+
+.signFont04{
+	font-family: 'Lucida Calligraphy';
+}
+
+.signFont05{
+	font-family: 'Lucida Handwriting';
+}
+
+.signFont06{
+	font-family: 'Playbill';
+}
+
+.signColor01{
+	color: blanchedalmond;
+	border: 3px outset #977137;
+	background-color: #53370d;
+}
+
+.signColor02{
+	color: #cacc7f;
+	border: 3px outset #424815;
+	background-color: #595130;
+}
+
+.signColor03{
+	color: #864500;
+	border: 3px outset #844723;
+	background-color: #aa815d;
+}
+
+.signColor04{
+	color: #a4b0b7;
+	border: 3px outset #ae760c;
+	background-color: #60350f;
+}
+
+.signColor05{
+	color: #d97d51;
+	border: 3px outset #867c44;
+	background-color: #554711;
+}
