@@ -245,6 +245,10 @@ li{
 	
 }
 
+.detailsTable{
+	width: 100%;
+}
+
 .randBtn{
 	font-size: 32px;
 	padding: 0;
@@ -259,7 +263,7 @@ li{
 	color: #b00;
 }
 
-.lineArea{
+.nameBlock .lineArea{
 	display: flex;
 	align-items: center;
 }
@@ -267,6 +271,20 @@ li{
 .lineArea input, .lineArea textarea{
 	width: 100%;
 	margin: 0 1em;
+}
+
+.detailsTable .lineArea input, .detailsTable .lineArea textarea{
+	margin: 0;
+}
+
+.detailsTable .tblRand{
+	text-align: center;
+	width: 0;
+}
+
+.detailsTable .tblLabel{
+	text-align: left;
+	width: 0;
 }
 
 .charBlock {
