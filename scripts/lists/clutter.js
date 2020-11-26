@@ -211,5 +211,9 @@ window.clutter = {
 		'Little bag of sand',
 		'Long pipe',
 		'Goose feather',
+		'Quill',
+		'Yoyo - wooden',
+		'A bit of string',
+		'Spectacles',		
 	]
 };

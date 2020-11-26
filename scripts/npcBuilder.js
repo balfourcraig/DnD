@@ -1,22 +1,76 @@
 let npcContext = {
-	characters: []
+	collections: [],
+	maxID: 0,
 };
+
+let currentID = 0;
 
 window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('printBtn').addEventListener('click', () => {
 		window.print();
 	});
 	npcContext = loadContextFromLocalStorage();
-	if(npcContext.characters.length > 0){
-		for(let c of npcContext.characters){
-			appendCharacter(c);
-		}
-	}
-	else{
-		appendCharacter(buildRandomCharacter());
-	}
+	currentID = npcContext.maxID + 1;
+	setUpSavedList();
+	appendCharacter(buildRandomCharacter());
+	document.getElementById('saveCollection').addEventListener('click', saveCurrentCollection);
 	document.getElementById('newCharBtn').addEventListener('click', () => appendCharacter(buildRandomCharacter()));
 });
+
+function setUpSavedList(){
+	const savedCharsArea = document.getElementById('savedCharsArea');
+	if(npcContext.collections.length > 0){
+		const list = document.createElement('ul');
+		for(let col of npcContext.collections){
+			const li = document.createElement('li');
+			let cList = '';
+			for(let c of col.characters){
+				cList += c.firstname + ',';
+			}
+			li.innerText = cList;
+			list.appendChild(li);
+		}
+		savedCharsArea.innerHTML = '';
+		savedCharsArea.appendChild(list);
+	}
+	else{
+		savedCharsArea.innerHTML = 'No saved NPC collections';
+	}
+}
+
+function saveCurrentCollection(){
+	console.log('save');
+	console.log(npcContext);
+	for(let i = 0; i < npcContext.collections.length; i++){
+		if(npcContext.collections[i].id === currentID){
+			npcContext.collections[i] = getCurrentCollection();
+			return;
+		}
+	}
+	npcContext.collections.push(getCurrentCollection());
+	saveContextToLocalStorage(npcContext);
+	setUpSavedList();
+}
+
+function getCurrentCollection(){
+	const blocks = document.querySelectorAll('#charArea .charBlock');
+	const chars = [];
+	for(let b of blocks){
+		const pic = b.querySelector('.profilePic').src;
+		chars.push({
+			gender: b.querySelector('.gender').innerText,
+			firstname: b.querySelector('.firstname').innerText,
+			surname: b.querySelector('.surname').innerText,
+			voice: b.querySelector('.voice').innerText,
+			clothing: b.querySelector('.clothing').innerText,
+			flavor: b.querySelector('.detail').innerText,
+			secret: b.querySelector('.secret').innerText,
+			notes: b.querySelector('.notes').innerText,
+		});
+	}
+	const collection = {characters: chars, id: currentID};
+	return collection;
+}
 
 function buildRandomCharacter(){
 	const c = {};
@@ -109,7 +163,6 @@ function appendCharacter(c){
 	const saveBtn = document.createElement('button');
 	saveBtn.innerText = 'SAVE';
 	btnArea.appendChild(delBtn);
-	//btnArea.appendChild(saveBtn);
 	
 	charBlock.appendChild(btnArea);
 	document.getElementById('charArea').appendChild(charBlock);
@@ -125,6 +178,7 @@ function buildRowBlock(content, name, randFunc, updateFunc){
 	randBtn.setAttribute('class', 'randBtn');
 	const inp = document.createElement('div');
 	inp.setAttribute('contentEditable','true');
+	inp.setAttribute('class',name.toLowerCase());
 	inp.addEventListener('input', () => updateFunc(inp.innerText));
 	inp.innerText = content;
 	inp.id = 'line' + lineUniquifier;
@@ -165,6 +219,7 @@ function buildLine(content, name, randFunc, updateFunc){
 	const inp = document.createElement('div');
 	inp.setAttribute('contentEditable','true');
 	inp.setAttribute('spellcheck', 'false');
+	inp.setAttribute('class',name.toLowerCase());
 	inp.addEventListener('input', () => updateFunc(inp.innerText));
 	inp.innerText = content;
 	inp.id = 'line' + lineUniquifier;
@@ -192,7 +247,8 @@ function loadContextFromLocalStorage() {
 			return JSON.parse(localStorage.npcContext);
     }
 	return {
-		characters: []
+		collections: [],
+		maxID: 0,
 	};
 }
 
