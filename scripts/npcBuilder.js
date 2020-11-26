@@ -3,6 +3,9 @@ let npcContext = {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+	document.getElementById('printBtn').addEventListener('click', () => {
+		window.print();
+	});
 	npcContext = loadContextFromLocalStorage();
 	if(npcContext.characters.length > 0){
 		for(let c of npcContext.characters){
@@ -132,8 +135,8 @@ function buildRowBlock(content, name, randFunc, updateFunc){
 	label.innerHTML = name;
 	label.htmlFor = inp.id;
 	randBtn.addEventListener('click', () => {
-		inp.value = randFunc();
-		updateFunc(inp.value);
+		inp.innerText = randFunc();
+		updateFunc(inp.innerText);
 	});
 	
 	const labelTd = document.createElement('td');
@@ -162,7 +165,7 @@ function buildLine(content, name, randFunc, updateFunc){
 	const inp = document.createElement('div');
 	inp.setAttribute('contentEditable','true');
 	inp.setAttribute('spellcheck', 'false');
-	inp.addEventListener('input', () => updateFunc(inp.value));
+	inp.addEventListener('input', () => updateFunc(inp.innerText));
 	inp.innerText = content;
 	inp.id = 'line' + lineUniquifier;
 	lineUniquifier++;
@@ -171,7 +174,7 @@ function buildLine(content, name, randFunc, updateFunc){
 	label.htmlFor = inp.id;
 	randBtn.addEventListener('click', () => {
 		inp.innerText = randFunc();
-		updateFunc(inp.value);
+		updateFunc(inp.innerText);
 	});
 	
 	lineArea.appendChild(label);

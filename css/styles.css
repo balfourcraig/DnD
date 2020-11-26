@@ -344,6 +344,12 @@ td{
 	opacity: 0.5;
 }
 
+#printBtn {
+  padding: 0;
+  font-size: 32px;
+  border-radius: 5px;
+}
+
 @media print{
 	.navHolder, button, header{
 		display: none;
