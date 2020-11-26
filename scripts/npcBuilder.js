@@ -78,19 +78,19 @@ function appendCharacter(c){
 	
 	const detailsTbl = document.createElement('table');
 	detailsTbl.setAttribute('class','detailsTable');
-	detailsTbl.appendChild(buildRowLine(c.gender, 'Gender', () => Math.random() > 0.5 ? 'M' : 'F',
+	detailsTbl.appendChild(buildRowBlock(c.gender, 'Gender', () => Math.random() > 0.5 ? 'M' : 'F',
 		(e) => {
 			c.gender = e;
 			c.profile =  '../images/' + arrayRandom(c.gender === 'M' ? npcPicLocationsM.items : npcPicLocationsF.items);
 			pic.src = c.profile;
 		})
 	);
-	detailsTbl.appendChild(buildRowLine(c.voice, 'Voice', () => arrayRandom(voices.items), (e) => c.voice = e));
+	detailsTbl.appendChild(buildRowBlock(c.voice, 'Voice', () => arrayRandom(voices.items), (e) => c.voice = e));
 	detailsTbl.appendChild(buildRowBlock(c.clothing, 'Clothing', () => randomNPCOutfit(c.gender), (e) => c.clothing = e));
 	detailsTbl.appendChild(buildRowBlock(c.loot, 'Loot', generateLoot, (e) => c.loot = e));
 	detailsTbl.appendChild(buildRowBlock(c.action, 'Doing', generateAction, (e) => c.action = e));
-	detailsTbl.appendChild(buildRowLine(c.flavor, 'Detail', () => arrayRandom(npcFlavor.items), (e) => c.flavor = e));
-	detailsTbl.appendChild(buildRowLine(c.secret, 'Secret', () => arrayRandom(npcSecrets.items), (e) => c.secret = e));
+	detailsTbl.appendChild(buildRowBlock(c.flavor, 'Detail', () => arrayRandom(npcFlavor.items), (e) => c.flavor = e));
+	detailsTbl.appendChild(buildRowBlock(c.secret, 'Secret', () => arrayRandom(npcSecrets.items), (e) => c.secret = e));
 	detailsTbl.appendChild(buildRowBlock(c.notes, 'Notes', () => '', (e) => c.notes = e));
 	
 	charBlock.appendChild(detailsTbl);
@@ -98,13 +98,17 @@ function appendCharacter(c){
 	const btnArea = document.createElement('div');
 	
 	const delBtn = document.createElement('button');
-	delBtn.innerText = 'DELETE';
+	delBtn.setAttribute('class', 'delBtn');
+	delBtn.innerText = 'X';
+	delBtn.addEventListener('click',() => {
+		charBlock.parentElement.removeChild(charBlock);
+	});
 	const saveBtn = document.createElement('button');
 	saveBtn.innerText = 'SAVE';
 	btnArea.appendChild(delBtn);
-	btnArea.appendChild(saveBtn);
+	//btnArea.appendChild(saveBtn);
 	
-	//charBlock.appendChild(btnArea);
+	charBlock.appendChild(btnArea);
 	document.getElementById('charArea').appendChild(charBlock);
 }
 
@@ -116,53 +120,13 @@ function buildRowBlock(content, name, randFunc, updateFunc){
 	const randBtn = document.createElement('button');
 	randBtn.innerHTML = '&#127922;';
 	randBtn.setAttribute('class', 'randBtn');
-	const inp = document.createElement('textarea');
-	inp.placeholder = name;
-	inp.addEventListener('input', () => updateFunc(inp.value));
-	inp.value = content;
+	const inp = document.createElement('div');
+	inp.setAttribute('contentEditable','true');
+	inp.addEventListener('input', () => updateFunc(inp.innerText));
+	inp.innerText = content;
 	inp.id = 'line' + lineUniquifier;
 	inp.setAttribute('spellcheck', 'false');
-	setTimeout(() => {
-		inp.style.height = (inp.scrollHeight * 1.1) + 'px';
-	},50);
-	lineUniquifier++;
-	const label = document.createElement('label');
-	label.innerHTML = name;
-	label.htmlFor = inp.id;
-	randBtn.addEventListener('click', () => {
-		inp.value = randFunc();
-		updateFunc(inp.value);
-	});
-	
-	const labelTd = document.createElement('td');
-	labelTd.setAttribute('class','tblLabel');
-	const randTd = document.createElement('td');
-	randTd.setAttribute('class','tblRand');
-	const inpTd = document.createElement('td');
-	inpTd.setAttribute('class','tblInp');
-	
-	labelTd.appendChild(label);
-	randTd.appendChild(randBtn);
-	inpTd.appendChild(inp);
-	row.appendChild(labelTd);
-	row.appendChild(inpTd);
-	row.appendChild(randTd);
-	
-	return row;
-}
 
-function buildRowLine(content, name, randFunc, updateFunc){
-	const row = document.createElement('tr');
-	row.setAttribute('class', 'lineArea');
-	const randBtn = document.createElement('button');
-	randBtn.innerHTML = '&#127922;';
-	randBtn.setAttribute('class', 'randBtn');
-	const inp = document.createElement('input');
-	inp.type = 'text';
-	inp.placeholder = name;
-	inp.addEventListener('input', () => updateFunc(inp.value));
-	inp.value = content;
-	inp.id = 'line' + lineUniquifier;
 	lineUniquifier++;
 	const label = document.createElement('label');
 	label.innerHTML = name;
@@ -195,18 +159,18 @@ function buildLine(content, name, randFunc, updateFunc){
 	const randBtn = document.createElement('button');
 	randBtn.innerHTML = '&#127922;';
 	randBtn.setAttribute('class', 'randBtn');
-	const inp = document.createElement('input');
-	inp.type = 'text';
-	inp.placeholder = name;
+	const inp = document.createElement('div');
+	inp.setAttribute('contentEditable','true');
+	inp.setAttribute('spellcheck', 'false');
 	inp.addEventListener('input', () => updateFunc(inp.value));
-	inp.value = content;
+	inp.innerText = content;
 	inp.id = 'line' + lineUniquifier;
 	lineUniquifier++;
 	const label = document.createElement('label');
 	label.innerHTML = name;
 	label.htmlFor = inp.id;
 	randBtn.addEventListener('click', () => {
-		inp.value = randFunc();
+		inp.innerText = randFunc();
 		updateFunc(inp.value);
 	});
 	

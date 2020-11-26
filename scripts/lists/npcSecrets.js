@@ -8,9 +8,9 @@ window.npcSecrets = {
 		'Just got a haircut',
 		'Has social anxiety',
 		'Nearly has enough saved for new boots',
-		'Doesn’t believe their own race exists',
+		'Doesn\'t believe their own race exists',
 		'Is a hoarder. Their house is full of junk',
-		'Doesn’t understand sarcasm.',
+		'Doesn\'t understand sarcasm.',
 		'Eats boogers - not just his own',
 		'NPC is an EXTREME germaphobe. Avoids shaking hands, is sneezed on (or anything worse) he/she straight up passes out',
 		'This character killed and replaced the person they purport to be. Their story isn\'t completely straight and they urge their friends and family to self-sabotage',
@@ -55,6 +55,7 @@ window.npcSecrets = {
 		'Was once betrayed by their superior and now doesn\' trust people',
 		'Is afraid of horses and any other form of transportation besides their own two legs',
 		'Dislikes their own children and drinks to numb the pain',
-		
+		'I wanted to be a ballerina. This NPC dislikes whatever occupation it has now. He/She always wanted to be a dancer but never had the chance. He/She is actually pretty good at will dance during conversations with the party if possible.',
+		'',
 	]
 }

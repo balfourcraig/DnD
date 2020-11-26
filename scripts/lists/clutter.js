@@ -206,6 +206,10 @@ window.clutter = {
 		'A little bag of troll poop',
 		'A ball of yarn',
 		'Two mismatched socks',
-		'A single shoelace'
+		'A single shoelace',
+		'A green beetle',
+		'Little bag of sand',
+		'Long pipe',
+		'Goose feather',
 	]
 };

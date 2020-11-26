@@ -34,7 +34,7 @@ function randomNPCHeadgear(gender){
 }
 
 function randomNPCFullLength(gender){
-	if(gender === 'M' || Math.random() < 0.3)
+	if(gender === 'M' || Math.random() < 0.4)
 		return arrayRandom(npcFullLength.items);
 	else
 		return arrayRandom(npcFullLength.items);
@@ -104,8 +104,9 @@ window.npcBoots = {
 		'Barefoot',
 		'Suede shoes',
 		'Boots with spurs',
+		'Buckskin moccasins',
 	]
-}
+};
 
 window.npcBootsF = {
 	name: 'Female Boots',
@@ -118,7 +119,7 @@ window.npcBootsF = {
 		'Soft heeled boots',
 		'Hard heeled boots',
 	]
-}
+};
 
 window.npcPants = {
 	name: 'Pants',
@@ -126,15 +127,19 @@ window.npcPants = {
 		'Leather pants',
 		'Shiney leather pants',
 		'Studded pants',
-		'Shorts',
 		'Breeches',
 		'Cropped breeches',
 		'Flared pants',
 		'Ripped trousers',
 		'Fine pants',
 		'Tattered pants',
+		'Kilt',
+		'Buckskin pants',
+		'Blacksmith pants',
+		'Common pants',
+		'Dress pants',
 	]
-}
+};
 
 window.npcPantsF = {
 	name: 'Female Pants',
@@ -147,8 +152,10 @@ window.npcPantsF = {
 		'Flowing skirt',
 		'Plain skirt',
 		'Floral skirt',
+		'Common skirt',
+		'Sack skirt',
 	]
-}
+};
 
 window.npcTop = {
 	name: 'Tops',
@@ -159,9 +166,18 @@ window.npcTop = {
 		'Tattered shirt',
 		'Wool jumper',
 		'Short-sleeved shirt',
-		'shirt with coat',
+		'Shirt with open coat',
+		'Buckskin shirt',
+		'Sack shirt',
+		'Highwayman vest',
+		'Rough vest',
+		'Silk shirt',
+		'Ripped jumper',
+		'Simple coat',
+		'Poncho',
+		'Singlet',
 	]
-}
+};
 
 window.npcTopF = {
 	name: 'Female Tops',
@@ -169,9 +185,9 @@ window.npcTopF = {
 		'Crop top',
 		'Barmaid top',
 		'Lace shirt',
-		'Tavern wench top'
+		'Tavern wench top',
 	]
-}
+};
 
 window.npcHair = {
 	name: 'Hair',
@@ -182,7 +198,7 @@ window.npcHair = {
 		'Wavy mane',
 		'Untamed mane',
 	]
-}
+};
 
 window.npcHairF = {
 	name: 'Female Hair',
@@ -198,7 +214,7 @@ window.npcHairF = {
 		'Shoulder length curly hair',
 		'Wreath of flowers',
 	]
-}
+};
 
 window.npcHeadgear = {
 	name: 'Headgear',
@@ -210,15 +226,37 @@ window.npcHeadgear = {
 		'Wool hat',
 		'Straw hat',
 		'Feather cap',
+		'Feathered headband',
+		'Cowl',
+		'Pointed hood',
+		'Fur hat',
+		'Turban',
+		'Tricorn hat',
+		'Feathered wide hat',
+		'Stetson',
+		'Fedora',
+		'Top hat',
+		'Peasant coif',
+		'Witch hunter\'s hat',
+		'Pointed cap',
+		'Beret',
+		'English flat cap',
+		'Deerstalker',
+		'Beanie',
+		'Vieled headwrap',
+		'Du rag',
 	]
-}
+};
 
 window.npcHeadgearF = {
 	name: 'Female Headgear',
 	items: [
 		'Flower wreath',
+		'Diadem',
+		'Headband',
+		'Braided headband'
 	]
-}
+};
 
 window.npcFullLength = {
 	name: 'Full Length Clothes',
@@ -230,8 +268,12 @@ window.npcFullLength = {
 		'Pyjamas',
 		'Cold weather clothing',
 		'Jerkin',
+		'Tattered robe',
+		'Monk\'s robe',
+		'Great coat',
+		'Full length coat',
 	]
-}
+};
 
 window.npcFullLengthF = {
 	name: 'Female Full Length Clothes',
@@ -240,8 +282,9 @@ window.npcFullLengthF = {
 		'Shawl',
 		'Common gown',
 		'Silk gown',
+		'Summer dress',
 	]
-}
+};
 
 window.npcBackClothing = {
 	name: 'Back Clothing',
@@ -261,9 +304,8 @@ window.npcBackClothing = {
 		'Short wool cape',
 		'Short fur cape',
 		'Short cloth cape',
-		'Great coat',
 	]
-}
+};
 
 window.npcMiscClothing = {
 	name: 'MiscClothing',
@@ -277,27 +319,28 @@ window.npcMiscClothing = {
 		'Silver ring',
 		'Gold ring',
 		'Jeweled ring',
-		'Gold necklace',
-		'Silver necklace',
-		'Bronze necklace',
 		'Earing',
 		'Apron',
 		'Belt',
 		'Broad Girdle',
 		'Girdle',
-		'Scarf',
+		'Wool scarf',
+		'Plain scarf',
 		'Large belt pouch',
 		'Small belt pouch',
 		'Purse',
 	]
-}
+};
 
 window.npcMiscClothingF = {
 	name: 'Female MiscClothing',
 	items: [
 		'Flower behind ear',
+		'Gold necklace',
+		'Silver necklace',
+		'Bronze necklace',
 	]
-}
+};
 
 window.npcGloves = {
 	name: 'Gloves',
@@ -307,4 +350,4 @@ window.npcGloves = {
 		'Leather gloves',
 		'Fingerless gloves',
 	]
-}
+};

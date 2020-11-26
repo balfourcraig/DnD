@@ -138,6 +138,21 @@ button:disabled:hover{
 	background-color: white;
 }
 
+button.delBtn{
+	margin: 5px 0;
+	padding: 10px;
+	border: 2px outset red;
+	color: red;
+	background-color: black;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+
+button.delBtn:hover{
+	background-color: red;
+	color: black;
+}
+
 li{
 	margin-bottom: 1em;
 }
@@ -247,6 +262,7 @@ li{
 
 .detailsTable{
 	width: 100%;
+	border-collapse: collapse;
 }
 
 .randBtn{
@@ -268,12 +284,12 @@ li{
 	align-items: center;
 }
 
-.lineArea input, .lineArea textarea{
+.lineArea div{
 	width: 100%;
 	margin: 0 1em;
 }
 
-.detailsTable .lineArea input, .detailsTable .lineArea textarea{
+.detailsTable .lineArea div{
 	margin: 0;
 }
 
@@ -284,7 +300,9 @@ li{
 
 .detailsTable .tblLabel{
 	text-align: left;
+	vertical-align: top;
 	width: 0;
+	padding-right: 10px;
 }
 
 .charBlock {
@@ -297,6 +315,7 @@ li{
 
 .charBlock .profilePic {
   height: 128px;
+  border-radius: 10px;
 }
 
 .charHeader {
@@ -311,6 +330,57 @@ li{
   display: none;
 }
 
-.nameBlock input {
+.nameBlock div {
   font-size: 24px;
+}
+
+td{
+	vertical-align: top;
+	border-bottom: 1px solid #666;
+	padding: 5px;
+}
+
+.detailsTable label {
+	opacity: 0.5;
+}
+
+@media print{
+	.navHolder, button, header{
+		display: none;
+	}
+
+	body, .pageWidth, .charBlock{
+		background-color: white;
+	}
+
+	.pageWidth{
+		margin: 0;
+	}
+
+	.charBlock{
+		color: black;
+		box-shadow: inset 0 0 1000px #eee;
+		border: none;
+	}
+
+	input,textarea {
+	  color: black !important;
+	  background-color: white;
+	  border: none;
+	  padding: 0;
+	}
+
+	
+
+	td{
+		padding: 0;
+		padding-bottom: 3px;
+		font-size: 12px;
+	}
+
+	.charBlock .profilePic {
+		height: 64px;
+		filter: grayscale(1);
+		opacity: 0.5;
+	}
 }
