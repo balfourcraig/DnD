@@ -27,7 +27,17 @@ function setUpSavedList(){
 			for(let c of col.characters){
 				cList += c.firstname + ',';
 			}
-			li.innerText = cList;
+			li.innerText = cList.substring(0, cList.length-1);
+			li.addEventListener('click', () => loadCollection(col));
+			const delBtn = document.createElement('button');
+			delBtn.setAttribute('class', 'delBtn');
+			delBtn.addEventListener('click', () => {
+				removeFromArray(npcContext.collections, col);
+				li.parentElement.removeChild(li);
+				saveContextToLocalStorage(npcContext);
+			});
+			delBtn.innerText = 'X';
+			li.appendChild(delBtn);
 			list.appendChild(li);
 		}
 		savedCharsArea.innerHTML = '';
@@ -38,12 +48,21 @@ function setUpSavedList(){
 	}
 }
 
+function loadCollection(collection){
+	document.getElementById('charArea').innerHTML = '';
+	for(let c of collection.characters){
+		appendCharacter(c);
+	}
+	currentID = collection.id;
+}
+
 function saveCurrentCollection(){
-	console.log('save');
-	console.log(npcContext);
 	for(let i = 0; i < npcContext.collections.length; i++){
+		npcContext.maxID = Math.max(npcContext.maxID, npcContext.collections[i].id);
 		if(npcContext.collections[i].id === currentID){
 			npcContext.collections[i] = getCurrentCollection();
+			saveContextToLocalStorage(npcContext);
+			setUpSavedList();
 			return;
 		}
 	}
@@ -56,7 +75,6 @@ function getCurrentCollection(){
 	const blocks = document.querySelectorAll('#charArea .charBlock');
 	const chars = [];
 	for(let b of blocks){
-		const pic = b.querySelector('.profilePic').src;
 		chars.push({
 			gender: b.querySelector('.gender').innerText,
 			firstname: b.querySelector('.firstname').innerText,
@@ -66,6 +84,7 @@ function getCurrentCollection(){
 			flavor: b.querySelector('.detail').innerText,
 			secret: b.querySelector('.secret').innerText,
 			notes: b.querySelector('.notes').innerText,
+			profile: pic = b.querySelector('.profilePic').src,
 		});
 	}
 	const collection = {characters: chars, id: currentID};
