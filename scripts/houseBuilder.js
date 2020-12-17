@@ -5,12 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function buildBuilding(){
 	container = document.getElementById('randomListEl');
-	container.innerHTML = '';
-	container.appendChild(buildHouse());
+	container.innerText = buildHouse();
 }
 
-function buildHouse(){
-	const holder = document.createElement('div');
-	const houseLevels = Math.max(1, ~~(Math.random() * 2 + 0.5));
-	
-}

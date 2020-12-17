@@ -212,6 +212,21 @@ window.npcFirstnameM = {
 		'Torsten',
 		'Ulf',
 		'Arne',
+		'Reiner',
+		'Nero',
+		'Conrad',
+		'Konrad',
+		'Elijha',
+		'Killian',
+		'Hector',
+		'Ishmael',
+		'Maximilian',
+		'Ragnar',
+		'Ludwig',
+		'Johann',
+		'Abraham',
+		'Stanislav',
+		'Vladislav',
 	]
 };
 
