@@ -12,10 +12,11 @@ const houseDescriptions = [
 	'painted',
 	'aged',
 	'old',
-	'tiled',
 	'overgrown',
 	'moss-covered',
-	
+	'well kept',
+	'detailed',
+	'decorative',
 ];
 
 const houseMaterials = [
@@ -24,6 +25,12 @@ const houseMaterials = [
 	'stone',
 	'clay brick',
 	'boarded',
+	'tiled',
+	'draughty',
+	'red brick',
+	'wood board',
+	'mud brick',
+	'adobe',
 ];
 
 const houseTypes = [
@@ -57,13 +64,15 @@ const houseSingleFeatures = [
 	'porch',
 	'veranda',
 	'planter box',
-	
+	'entrance',
+	'hall',
 ];
 
 const houseMultipleFeatures = [
 	'windows',
 	'eves',
 	'doors',
+	'fittings',
 ];
 
 const houseLife = [
@@ -94,12 +103,18 @@ function buildHouse(){
 	const featureIndex = Math.random();
 	if(featureIndex < 0.3){
 		h += ' with ';
-		h += addArticle(arrayRandom(houseDescriptions)) + ' ';
+		let desc = arrayRandom(houseDescriptions);
+		while(h.includes(desc))
+			desc = arrayRandom(houseDescriptions);
+		h += addArticle(desc) + ' ';
 		h += arrayRandom(houseSingleFeatures);
 	}
 	else if(featureIndex < 0.6){
 		h += ' with ';
-		h += arrayRandom(houseDescriptions) + ' ';
+		let desc = arrayRandom(houseDescriptions);
+		while(h.includes(desc))
+			desc = arrayRandom(houseDescriptions);
+		h += desc + ' ';
 		h += arrayRandom(houseMultipleFeatures);
 	}
 	else if(featureIndex < 0.75){

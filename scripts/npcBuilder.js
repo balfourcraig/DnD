@@ -84,6 +84,7 @@ function getCurrentCollection(){
 			flavor: b.querySelector('.detail').innerText,
 			secret: b.querySelector('.secret').innerText,
 			notes: b.querySelector('.notes').innerText,
+			house: b.querySelector('.house').innerText,
 			profile: pic = b.querySelector('.profilePic').src,
 		});
 	}
@@ -103,6 +104,7 @@ function buildRandomCharacter(){
 	c.clothing = randomNPCOutfit(c.gender);
 	c.action = generateAction();
 	c.notes = '';
+	c.house = buildHouse();
 	c.profile = '../images/' + arrayRandom(c.gender === 'M' ? npcPicLocationsM.items : npcPicLocationsF.items);
 	
 	return c;
@@ -168,6 +170,7 @@ function appendCharacter(c){
 	detailsTbl.appendChild(buildRowBlock(c.flavor, 'Detail', () => arrayRandom(npcFlavor.items), (e) => c.flavor = e));
 	detailsTbl.appendChild(buildRowBlock(c.secret, 'Secret', () => arrayRandom(npcSecrets.items), (e) => c.secret = e));
 	detailsTbl.appendChild(buildRowBlock(c.notes, 'Notes', () => '', (e) => c.notes = e));
+	detailsTbl.appendChild(buildRowBlock(c.house, 'House', buildHouse, (e) => c.house = e));
 	
 	charBlock.appendChild(detailsTbl);
 	
