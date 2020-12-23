@@ -75,13 +75,13 @@ window.npcFlavor = {
 		'Milkstache. This NPC has a clear fondness for milk, visible by the almost permanent milkstache on his/her upper lips.',
 		'Pockmarks. This NPC has his/her face covered in the permanent impression that the pocks left.',
 		'Armpit eater. This NPC often sniffs his armpits, then proceeds to pick something out of it and eat it.',
-		'Fake beard. This NPC wears a fake beard',
+		'Wears a fake beard',
 		'Beautiful. This NPC is incredibly beautiful, and the party will need to do a DC 10 charisma save to not be completely flustered by this NPCs beauty.',
-		'Ugly. The opposite of number 49. The party needs to do a constitution saving throw of DC 10, or they\'ll puke.',
-		'Cross-eyed. This NPC is cross eyed. Seems pretty self-explanatory to me.',
-		'Peg-leg. This NPC has one wooden leg, just like the classic pirate captains used to have.',
+		'Ugly. The party needs to do a constitution saving throw of DC 10, or they\'ll puke.',
+		'Is cross eyed',
+		'Has one wooden leg, just like the classic pirate captains used to have.',
 		'Missing eyebrows. This NPC has no eyebrows. It\'s really difficult to see what kind of expression he or she is making, therefore players have disadvantage on wisdom (Insight) checks concerning this NPC.',
-		'Apocalypse Now. This NPC is constantly talking about the end of the world, which, according to him/her, is just around the corner. Hide yo wife, hide yo kids!',
+		'This NPC is constantly talking about the end of the world, which, according to him/her, is just around the corner. Hide yo wife, hide yo kids!',
 		'Seemingly Disturbed. This NPC looks very disturbed. He/She shakes all the time, constantly watches his/her surroundings and jumps in the air in fright from every little noise.',
 		'Not a care in the world. This NPC is unbelievably happy. They only see the good in life and are extremely positive.',
 		'Classic Tammy. This NPC has underwear visible above his or her pants. It\'s not that his/her pants are really low, but his/her underwear is just really high. Roll a d4 to determine the state of the underwear, 1: Clean, nothing special, 2: Dirty and torn, 3: Obviously way too tight, 4: Very sexy.',
@@ -94,5 +94,8 @@ window.npcFlavor = {
 		'Smells of lavender and expensive oils',
 		'Squinter. This NPC squints their eyes at the party. It looks like he/she needs a pair of glasses.',
 		'Want a cookie? This NPC bakes their own cookies and offers to anyone and everyone to try. Roll 1d6/2 to determine the quality. 1: Terrible, bitter and is that a hair? 2: Average, OK cookies. 3: These are amazing, crunchy, sweet and something you can\'t quite put your finger on but it\'s awesome.',
+		'Tattoo of someone\'s name on their neck'
+		'Has arcane symbols tattooed on their arms - a faded reminder of a more wild youth',
+		
 	]
 }

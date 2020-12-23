@@ -51,13 +51,26 @@ function randomNPCBackClothing(gender){
 	return arrayRandom(npcBackClothing.items);
 }
 
+function randomNPCMask(gender){
+	return arrayRandom(npcMask.items);
+}
+
+function randomNPCEyewear(gender){
+	return arrayRandom(npcEyewear.items);
+}
+
 function randomNPCGloves(gender){
 	return arrayRandom(npcGloves.items);
 }
 
 function randomNPCOutfitList(gender){
 	let outfit = [];
-	outfit.push(randomNPCHeadgear(gender));
+	if(Math.random() < 0.2)
+		outfit.push(randomNPCHeadgear(gender));
+	if(Math.random() < 0.01)
+		outfit.push(randomNPCMask(gender));
+	if(Math.random() < 0.04)
+		outfit.push(randomNPCEyewear(gender));
 	if(Math.random() < 0.2)
 		outfit.push(randomNPCFullLength(gender));
 	else{
@@ -85,6 +98,30 @@ function randomNPCOutfit(gender){
 		outfitString += i + '\n';
 	return outfitString.trim();
 }
+
+window.npcEyewear = {
+	name: 'Eyewear',
+	items: [
+		'Reading glasses',
+		'Half-moon glasses',
+		'Monocle',
+		'Cracked glasses',
+		'Dirty glasses',
+		'Plain glasses',
+		'Silver glasses',
+		'Eye patch',
+		'Blindfold'
+	]
+};
+
+window.npcMask = {
+	name: 'Masks',
+	items: [
+		'Bandit cloth mask',
+		'Simple cloth mask',
+		'Mouth covering',
+	]
+};
 
 window.npcBoots = {
 	name: 'Boots',
@@ -245,6 +282,7 @@ window.npcHeadgear = {
 		'Beanie',
 		'Vieled headwrap',
 		'Du rag',
+		'Head bandages',
 	]
 };
 
@@ -310,7 +348,6 @@ window.npcBackClothing = {
 window.npcMiscClothing = {
 	name: 'MiscClothing',
 	items: [
-		'Eye patch',
 		'Bronze amulet',
 		'Silver amulet',
 		'Gold amulet',
