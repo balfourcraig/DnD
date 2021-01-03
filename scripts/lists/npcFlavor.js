@@ -94,7 +94,7 @@ window.npcFlavor = {
 		'Smells of lavender and expensive oils',
 		'Squinter. This NPC squints their eyes at the party. It looks like he/she needs a pair of glasses.',
 		'Want a cookie? This NPC bakes their own cookies and offers to anyone and everyone to try. Roll 1d6/2 to determine the quality. 1: Terrible, bitter and is that a hair? 2: Average, OK cookies. 3: These are amazing, crunchy, sweet and something you can\'t quite put your finger on but it\'s awesome.',
-		'Tattoo of someone\'s name on their neck'
+		'Tattoo of someone\'s name on their neck',
 		'Has arcane symbols tattooed on their arms - a faded reminder of a more wild youth',
 		
 	]
