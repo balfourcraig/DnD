@@ -1,0 +1,25 @@
+window.snSTitle1 = {
+	name: 'Sword and Sorcery Title - Part 1',
+	items: [
+		'Acolyte',
+		'Beast',
+		'Blood',
+		'Children',
+		'Gods',
+		'Hand',
+		'Jewels',
+		'Master',
+		'Paths',
+		'Plague',
+		'Prophecy',
+		'Queen',
+		'Servant',
+		'Shadow',
+		'Sign',
+		'Song',
+		'Sword',
+		'Vengeance',
+		'Wind',
+		'Whisper',
+	]
+}

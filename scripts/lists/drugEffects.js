@@ -1,5 +1,5 @@
-window.npcFlavor = {
-	name: 'Flavor',
+window.drugEffects = {
+	name: 'Drug Effects',
 	items: [
 		'High energy. +2 to inititive',
 		'Painkillers. +2 to AC but -2 to DEX rolls',

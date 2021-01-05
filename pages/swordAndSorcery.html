@@ -3,8 +3,9 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta charset="UTF-8">
-	<title>NPC Builder - D&amp;D</title>
+	<title>Sword and Sorcery - D&amp;D</title>
 	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/SnSStyles.css">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 	
 	<script src="../scripts/utils.js"></script>
@@ -21,10 +22,13 @@
 	<script src="../scripts/lists/npcActions.js"></script>
 	<script src="../scripts/lists/npcPrayers.js"></script>
 	<script src="../scripts/lists/houses.js"></script>
-	
 	<script src="../scripts/lists/npcClothing.js"></script>
 	
-	<script src="../scripts/npcBuilder.js"></script>
+	<script src="../scripts/lists/SnSTitle1.js"></script>
+	<script src="../scripts/lists/SnSTitle2.js"></script>
+	<script src="../scripts/lists/SnSMissions.js"></script>
+	
+	<script src="../scripts/swordAndSorcery.js"></script>
 </head>
 <body>
 <div class="navHolder">
@@ -38,19 +42,19 @@
 <main>
 	<div class="pageWidth">
 		<header>
-			<h1>NPC Builder</h1>
-			<button id="printBtn">&#128438;</button>
+			<h1>Sword and Sorcery</h1>
 		</header>
-		<div>
-			<div id="savedCharsArea"></div>
-			<button id="showSavedBtn">Show saved characters</button>
-			<button id="saveCollection">Save characters</button>
-		</div>
-		<section id="charArea">
+		<section>
+			<h1 id="SnSTitle"></h1>
+			<p id="missionBlock"></p>
+			<p id="hookBlock"></p>
+			<p id="antagonistBlock"></p>
+			<p id="potentialAllyBlock"></p>
+			<p id="complicationBlock"></p>
+			<p id="obstacleBlock"></p>
+			<p id="twistBlock"></p>
+			<p id="rewardBlock"></p>
 		</section>
-		<div>
-			<button id="newCharBtn">Add New</button>
-		</div>
 		<div class="scrollOverflow"></div>
 	</div>
 </main>
