@@ -3,6 +3,15 @@ const goldenAngleRad = 2.39996322972865332;
 
 let randh = Math.random();
 
+function element(type, contents, htmlClass){
+	const el = document.createElement(type);
+	if(contents !== undefined)
+		el.innerHTML = contents;
+	if(htmlClass !== undefined)
+		el.setAttribute('class', htmlClass);
+	return el;
+}
+
 function arrayRandom(arr){
 	return arr[Math.floor(Math.random() * arr.length)];
 }
