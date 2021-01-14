@@ -1,52 +1,25 @@
-let player = createBlankPlayer();
-let raceBuilder = emptyFunc;
+let player = null;
 
-const races = [
-	{name: 'Varient Human', builder: buildVarientHuman}
-]
+function loadContextFromLocalStorage() {
+	console.log('reading');
+    if (typeof (Storage) === "undefined") 
+        console.warn('Browser does not support Web Storage.');
+    else {
+		if(localStorage.savedPlayer)
+			player = JSON.parse(localStorage.savedPlayer);
+    }
+	player = null;
+}
 
 window.addEventListener('DOMContentLoaded', () => {
-	setup();
-});
-
-function setup(){
-	const raceSelect = document.getElementById('raceSelect');
-	for(let i = 0; i < races.length; i++){
-		const r = races[i];
-		const op = element('option', r.name);
-		op.value = i;
-		raceSelect.appendChild(op);
-	}
-	raceSelect.addEventListener('change', () => {
-		const index = parseInt(raceSelect.value);
-		raceBuilder = races[index].builder;
-		raceArea = document.getElementById('raceArea');
-		raceArea.innerHTML = '';
-		if(raceBuilder != null){
-			raceArea.appendChild(raceBuilder(player));
-		}
-	});
-	
-	const levelSelect = document.getElementById('levelSelect');
-	for(let i = 1; i <= 20; i++){
-		const o = element('option', i);
-		o.value = i;
-		levelSelect.appendChild(o);
-	}
-	levelSelect.addEventListener('change', () => {
-		player.level = levelSelect.value;
+	const sheet = document.getElementById('sheetHolder');
+	sheet.innerHTML = '';
+	loadContextFromLocalStorage();
+	if(player === null)
+		sheet.innerText = 'ERROR. No player saved';
+	else
 		updateSheet();
-	});
-	updateSheet();
-}
-
-function playerSkillProficient(skill){
-	for(let s of player.skillProficiencies){
-		if(s.value === skill)
-			return true;
-	}
-	return false;
-}
+});
 
 function updateSheet(){
 	const sheet = document.getElementById('sheetHolder');
@@ -141,65 +114,4 @@ function getProficiencyBonus(level){
 		return 5;
 	else
 		return 6;
-}
-
-function loadContextFromLocalStorage() {
-    if (typeof (Storage) === "undefined") 
-        console.warn('Browser does not support Web Storage.');
-    else {
-		if(localStorage.savedPlayer)
-			return JSON.parse(localStorage.savedPlayer);
-    }
-	return createBlankPlayer();
-}
-
-function saveToLocalStorage() {
-	console.log('saved');
-    if (typeof (Storage) === "undefined") 
-        console.warn('Browser does not support Web Storage. Not saved');
-    else {
-		localStorage.savedPlayer = JSON.stringify(player);
-		console.log(localStorage.savedPlayer);
-    }
-}
-
-
-function createBlankPlayer(){
-	return {
-		name: '',
-		race: '',
-		level: 1,
-		atr: {
-			STR: {name: 'STR', base: 10, racial: 0, misc: 0},
-			DEX: {name: 'DEX', base: 10, racial: 0, misc: 0},
-			CON: {name: 'CON', base: 10, racial: 0, misc: 0},
-			INT: {name: 'INT', base: 10, racial: 0, misc: 0},
-			WIS: {name: 'WIS', base: 10, racial: 0, misc: 0},
-			CHA: {name: 'CHA', base: 10, racial: 0, misc: 0}
-		},
-		asi: [],
-		HP: {
-			max: 0,
-			min: 0
-		},
-		speed: {
-			walk: 0,
-			swim: 0,
-			fly: 0
-		},
-		AC: 0,
-		inititive: 0,
-		darkvision: 0,
-		skillProficiencies: [],
-		toolProficiencies: [],
-		armorProficiencies: [],
-		weaponProficiencies: [],
-		languages: [
-			{id: 'base', value: 'Common'}
-		],
-	};
-}
-
-function emptyFunc(){
-	return false;
 }

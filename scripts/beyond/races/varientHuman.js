@@ -7,7 +7,7 @@ function buildVarientHuman(player){
 	holder.appendChild(asi(player));
 	holder.appendChild(languageSelector(player, 1));
 	holder.appendChild(skillSelector(player, 1));
-	
+	holder.appendChild(element('p', '+ a feat, but I\'m not doing that yet'))
 	return holder;
 }
 
