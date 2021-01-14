@@ -49,25 +49,25 @@ function playerSkillProficient(skill){
 }
 
 function updateSheet(){
-	const sheet = document.getElementById('sheetHolder');
-	sheet.innerHTML = '';
-	sheet.appendChild(element('h3', 'Attributes'));
-	sheet.appendChild(atrArea());
+	//const sheet = document.getElementById('sheetHolder');
+	//sheet.innerHTML = '';
+	//sheet.appendChild(element('h3', 'Attributes'));
+	//sheet.appendChild(atrArea());
 	
-	sheet.appendChild(element('h3', 'Skills'));
-	sheet.appendChild(skillsArea());
+	//sheet.appendChild(element('h3', 'Skills'));
+	//sheet.appendChild(skillsArea());
 	
-	sheet.appendChild(element('h3', 'Proficiency Bonus'));
-	sheet.appendChild(element('p', getProficiencyBonus(player.level)));
+	//sheet.appendChild(element('h3', 'Proficiency Bonus'));
+	//sheet.appendChild(element('p', getProficiencyBonus(player.level)));
 	
-	const langList = document.createElement('ul');
-	sheet.appendChild(element('h3','Languages'));
-	for(let lang of player.languages){
-		const li = document.createElement('li');
-		li.innerText = lang.value;
-		langList.appendChild(li);
-	}
-	sheet.appendChild(langList);
+	//const langList = document.createElement('ul');
+	//sheet.appendChild(element('h3','Languages'));
+	//for(let lang of player.languages){
+		//const li = document.createElement('li');
+		//li.innerText = lang.value;
+		//langList.appendChild(li);
+	//}
+	//sheet.appendChild(langList);
 	saveToLocalStorage();
 }
 

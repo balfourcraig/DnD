@@ -5,8 +5,10 @@ function loadContextFromLocalStorage() {
     if (typeof (Storage) === "undefined") 
         console.warn('Browser does not support Web Storage.');
     else {
-		if(localStorage.savedPlayer)
+		if(localStorage.savedPlayer){
 			player = JSON.parse(localStorage.savedPlayer);
+			return;
+		}
     }
 	player = null;
 }
