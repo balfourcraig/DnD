@@ -17,6 +17,5 @@ window.drugEffects = {
 		'One with nature. Has the sudden urge to remove all clothes, but can cast Animal Friendship, Speak with Animals, or Mold Earth once',
 		'I CAN FLY! Gains 10ft fly speed for up to 1 minute. Requires concentration and constant flapping of the arms',
 		'Has an urge to create art. This could be painting, sculpture, poetry, music, whatever is fitting',
-		'',
 	]
 }

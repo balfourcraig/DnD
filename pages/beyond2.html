@@ -14,6 +14,9 @@
 	<script src="../scripts/beyond/races/race.js"></script>
 	<script src="../scripts/beyond/races/varientHuman.js"></script>
 	
+	<script src="../scripts/beyond/classes/class.js"></script>
+	<script src="../scripts/beyond/classes/fighter.js"></script>
+	
 	<script src="../scripts/beyond/beyond.js"></script>
 	
 </head>
@@ -35,20 +38,19 @@
 			<h2>Level</h2>
 			<select id="levelSelect">
 			</select>
-			<div id="raceArea"></div>
 		</section>
 		<section>
 			<h2>Race</h2>
 			<select id="raceSelect">
-				<option>NONE</option>
 			</select>
 			<div id="raceArea"></div>
 		</section>
+		<section>
+			<h2>Class</h2>
+			<select id="classSelect"></select>
+			<div id="classArea"></div>
+		</section>
 		<div style="display:none">
-			<section>
-				<h2>Class</h2>
-				<select id="classSelect"></select>
-			</section>
 			<section>
 				<h2>Attributes</h2>
 				<select id="attributeSelect"></select>

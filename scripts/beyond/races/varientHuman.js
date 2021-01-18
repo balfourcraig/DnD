@@ -4,9 +4,9 @@ function buildVarientHuman(player){
 	const traitsDesc = 'ASI, Extra language, Skill, Feat';
 	holder = createRaceHolder(title, description, traitsDesc);
 
-	holder.appendChild(asi(player));
-	holder.appendChild(languageSelector(player, 1));
-	holder.appendChild(skillSelector(player, 1));
+	holder.appendChild(asi(player, 'race'));
+	holder.appendChild(languageSelector(player, 1, 'race'));
+	holder.appendChild(skillSelector(player, 1, 'race'));
 	holder.appendChild(element('p', '+ a feat, but I\'m not doing that yet'))
 	return holder;
 }

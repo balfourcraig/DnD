@@ -49,7 +49,25 @@ const atrNames = [
 	'CHA'
 ];
 
-function languageSelector(player, num){
+function resetByTag(player, tag){
+	player.asi = filterOutTag(player.asi, tag);
+	player.skillProficiencies = filterOutTag(player.skillProficiencies, tag);
+	player.toolProficiencies = filterOutTag(player.toolProficiencies, tag);
+	player.armorProficiencies = filterOutTag(player.armorProficiencies, tag);
+	player.weaponProficiencies = filterOutTag(player.weaponProficiencies, tag);
+	player.languages = filterOutTag(player.languages, tag);
+}
+
+function filterOutTag(arr, tag){
+	const newArr = [];
+	for(let i of arr){
+		if(i.tag !== tag)
+			newArr.push(i);
+	}
+	return newArr;
+}
+
+function languageSelector(player, num, tag){
 	const holder = document.createElement('div');
 	const title = document.createElement('h4');
 	title.innerText = '+' + num + ' Language' + (num === 1 ? '' : 's');
@@ -72,7 +90,7 @@ function languageSelector(player, num){
 		s.addEventListener('change', () => {
 			removeLang(s.id, player);
 			if(s.value !== '-')
-				player.languages.push({id: s.id, value: s.value});
+				player.languages.push({id: s.id, value: s.value, tag:tag});
 			updateSheet();
 		});
 		holder.appendChild(s);
@@ -80,7 +98,38 @@ function languageSelector(player, num){
 	return holder;
 }
 
-function skillSelector(player, num){
+function skillSelectorLimited(player, num, tag, availableSkillNames){
+	const holder = document.createElement('div');
+	const title = document.createElement('h4');
+	title.innerText = '+' + num + ' Skill' + (num === 1 ? '' : 's');
+	holder.appendChild(title);
+	for(let i = 0; i < num; i++){
+		const s = document.createElement('select');
+		s.id = 'skill' + uniquifier++;
+		const none = document.createElement('option');
+		none.innerText = '-';
+		none.value = '-';
+		s.appendChild(none);
+		
+		for(let a of skills){
+			if(availableSkillNames.includes(a.name)){
+				const o = element('option', a.name);
+				o.value = a.name;
+				s.appendChild(o);
+			}
+		}
+		s.addEventListener('change', () => {
+			removeSkill(s.id, player);
+			if(s.value !== '-')
+				player.skillProficiencies.push({id: s.id, value: s.value, tag:tag});
+			updateSheet();
+		});
+		holder.appendChild(s);
+	}
+	return holder;
+}
+
+function skillSelector(player, num, tag){
 	const holder = document.createElement('div');
 	const title = document.createElement('h4');
 	title.innerText = '+' + num + ' Skill' + (num === 1 ? '' : 's');
@@ -101,7 +150,7 @@ function skillSelector(player, num){
 		s.addEventListener('change', () => {
 			removeSkill(s.id, player);
 			if(s.value !== '-')
-				player.skillProficiencies.push({id: s.id, value: s.value});
+				player.skillProficiencies.push({id: s.id, value: s.value, tag:tag});
 			updateSheet();
 		});
 		holder.appendChild(s);
@@ -109,15 +158,15 @@ function skillSelector(player, num){
 	return holder;
 }
 
-function asi(player){
+function asi(player, tag){
 	const holder = document.createElement('div');
 	const title = document.createElement('h4');
 	title.innerText = 'Ability Score Improvement';
 	holder.appendChild(title);
 
-	const s1 = asiSelect(player);
+	const s1 = asiSelect(player, tag);
 	holder.appendChild(s1);
-	const s2 = asiSelect(player);
+	const s2 = asiSelect(player, tag);
 	holder.appendChild(s2);
 	
 	return holder;
@@ -159,7 +208,7 @@ function removeAsi(id, player){
 		player.asi.splice(lineIndex, 1);
 }
 
-function asiSelect(player){
+function asiSelect(player, tag){
 	const s = document.createElement('select');
 	s.id = 'asi' + uniquifier++;
 	const none = document.createElement('option');
@@ -177,9 +226,79 @@ function asiSelect(player){
 	s.addEventListener('change', () => {
 		removeAsi(s.id, player);
 		if(s.value !== '-')
-			player.asi.push({id: s.id, value: 1, stat: s.value});
+			player.asi.push({id: s.id, value: 1, stat: s.value, tag:tag});
 		updateSheet();
 	});
 	
 	return s;
+}
+
+function playerSkillProficient(player, skill){
+	for(let s of player.skillProficiencies){
+		if(s.value === skill)
+			return true;
+	}
+	return false;
+}
+
+function getAtrTotal(player, atr){
+	let asiMod = 0;
+	for(let i of player.asi){
+		if(i.stat === atr.name)
+			asiMod += i.value;
+	}
+	return atr.base + atr.racial + asiMod + atr.misc;
+}
+
+function getAtrMod(player, atr){
+	return ~~((getAtrTotal(player, atr) - 10) / 2)
+}
+
+function getProficiencyBonus(level){
+	if(level < 5)
+		return 2;
+	else if (level < 9)
+		return 3;
+	else if (level < 13)
+		return 4;
+	else if (level < 17)
+		return 5;
+	else
+		return 6;
+}
+
+function createBlankPlayer(){
+	return {
+		name: '',
+		race: '',
+		level: 1,
+		atr: {
+			STR: {name: 'STR', base: 10, racial: 0, misc: 0},
+			DEX: {name: 'DEX', base: 10, racial: 0, misc: 0},
+			CON: {name: 'CON', base: 10, racial: 0, misc: 0},
+			INT: {name: 'INT', base: 10, racial: 0, misc: 0},
+			WIS: {name: 'WIS', base: 10, racial: 0, misc: 0},
+			CHA: {name: 'CHA', base: 10, racial: 0, misc: 0}
+		},
+		asi: [],
+		speed: {
+			walk: 0,
+			swim: 0,
+			fly: 0
+		},
+		AC: 0,
+		inititive: 0,
+		darkvision: 0,
+		skillProficiencies: [],
+		toolProficiencies: [],
+		armorProficiencies: [],
+		weaponProficiencies: [],
+		languages: [
+			{id: 'base', value: 'Common'}
+		],
+	};
+}
+
+function emptyFunc(){
+	return false;
 }

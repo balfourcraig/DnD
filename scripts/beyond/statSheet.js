@@ -10,7 +10,7 @@ function loadContextFromLocalStorage() {
 			return;
 		}
     }
-	player = null;
+	player = createBlankPlayer();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -57,11 +57,11 @@ function skillsArea(){
 	skillsTable.appendChild(titleRow);
 	for(let s of skills){
 		const row = element('tr');
-		const prof = playerSkillProficient(s.name);
+		const prof = playerSkillProficient(player, s.name);
 		row.appendChild(element('td', prof ? '&#x2714;' : ''));
 		row.appendChild(element('td', s.name));
 		row.appendChild(element('td', s.atr));
-		row.appendChild(element('td', getAtrMod(player.atr[s.atr]) + (prof ? profBonus : 0)));
+		row.appendChild(element('td', getAtrMod(player, player.atr[s.atr]) + (prof ? profBonus : 0)));
 		skillsTable.appendChild(row);
 	}
 	return skillsTable;
@@ -76,13 +76,13 @@ function atrArea(){
 	for(let a of atrNames){
 		const atr = player.atr[a];
 		const modEl = document.createElement('td');
-		const mod = getAtrMod(atr);
+		const mod = getAtrMod(player, atr);
 		if(mod > 0)
 			modEl.innerText = '+' + mod;
 		else
 			modEl.innerText = mod;
 		modRow.appendChild(modEl);
-		valRow.appendChild(element('td', '(' + getAtrTotal(atr) + ')'));
+		valRow.appendChild(element('td', '(' + getAtrTotal(player, atr) + ')'));
 		statRow.appendChild(element('td', a));
 	}
 	
@@ -92,28 +92,3 @@ function atrArea(){
 	return atrTable;
 }
 
-function getAtrTotal(atr){
-	let asiMod = 0;
-	for(let i of player.asi){
-		if(i.stat === atr.name)
-			asiMod += i.value;
-	}
-	return atr.base + atr.racial + asiMod + atr.misc;
-}
-
-function getAtrMod(atr){
-	return ~~((getAtrTotal(atr) - 10) / 2)
-}
-
-function getProficiencyBonus(level){
-	if(level < 5)
-		return 2;
-	else if (level < 9)
-		return 3;
-	else if (level < 13)
-		return 4;
-	else if (level < 17)
-		return 5;
-	else
-		return 6;
-}
