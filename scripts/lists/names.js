@@ -227,6 +227,9 @@ window.npcFirstnameM = {
 		'Abraham',
 		'Stanislav',
 		'Vladislav',
+		'Solveig',
+		'Ivar',
+		'Harold',
 	]
 };
 
@@ -589,10 +592,8 @@ window.npcFirstnameF = {
 		'Sigrid',
 		'Yrsa',
 		'Ulfhild',
-		'Solveig',
 		'Sif',
-		'Ivar',
-		'Harold',
+		
 	]
 };
 
